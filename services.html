@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Services | Elwatt Electrical | Kenya's Trusted Electricians</title>
+    <meta name="description" content="Comprehensive electrical services in Kenya - residential wiring, commercial installations, solar systems, repairs, and 24/7 emergency support.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .service-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://static.photos/technology/1200x630/2');
+            background-size: cover;
+            background-position: center;
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+        }
+        .floating-contact {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-black text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center">
+                <span class="text-yellow-400">ELWATT</span> <span class="ml-1">ELECTRICAL</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="about.html" class="hover:text-yellow-400 transition">About</a>
+                <a href="services.html" class="text-yellow-400 hover:text-yellow-300 transition">Services</a>
+                <a href="projects.html" class="hover:text-yellow-400 transition">Projects</a>
+                <a href="quote.html" class="hover:text-yellow-400 transition">Get Quote</a>
+                <a href="contact.html" class="hover:text-yellow-400 transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black py-4 px-6 absolute w-full left-0">
+            <a href="index.html" class="block py-2 hover:text-yellow-400 transition">Home</a>
+            <a href="about.html" class="block py-2 hover:text-yellow-400 transition">About</a>
+            <a href="services.html" class="block py-2 text-yellow-400 hover:text-yellow-300 transition">Services</a>
+            <a href="projects.html" class="block py-2 hover:text-yellow-400 transition">Projects</a>
+            <a href="quote.html" class="block py-2 hover:text-yellow-400 transition">Get Quote</a>
+            <a href="contact.html" class="block py-2 hover:text-yellow-400 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="service-hero text-white py-32 px-6">
+        <div class="container mx-auto text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Electrical Services</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Comprehensive solutions for residential, commercial, and industrial needs</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Residential -->
+                <div id="residential" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="home" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Residential Electrical Works</h3>
+                    <p class="text-gray-600 mb-4">Complete electrical solutions for homes, apartments, and residential properties, including wiring, lighting, power outlets, and safety installations.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Full house wiring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Lighting design & installation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Power backup systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Safety inspections</span>
+                        </li>
+                    </ul>
+                    <a href="quote.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">Request Quote</a>
+                </div>
+
+                <!-- Commercial & Industrial -->
+                <div id="commercial" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="building" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Commercial & Industrial Installations</h3>
+                    <p class="text-gray-600 mb-4">Professional electrical installations for offices, retail spaces, factories, and industrial facilities designed for efficiency and compliance.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Office wiring & networking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Industrial machinery wiring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Three-phase power systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Energy management solutions</span>
+                        </li>
+                    </ul>
+                    <a href="quote.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">Request Quote</a>
+                </div>
+
+                <!-- Solar & Renewable -->
+                <div id="solar" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="sun" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Solar & Renewable Energy Systems</h3>
+                    <p class="text-gray-600 mb-4">Sustainable power solutions including solar panel installations, inverters, battery banks, and complete off-grid systems.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Residential solar systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Commercial solar installations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Solar water heating</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Hybrid power solutions</span>
+                        </li>
+                    </ul>
+                    <a href="quote.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">Request Quote</a>
+                </div>
+
+                <!-- Repairs & Maintenance -->
+                <div id="repairs" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="tool" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Repairs & Preventive Maintenance</h3>
+                    <p class="text-gray-600 mb-4">Diagnostic, repair, and maintenance services to keep your electrical systems running safely and efficiently.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Fault diagnosis & repair</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Circuit breaker issues</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Wiring inspections</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Scheduled maintenance programs</span>
+                        </li>
+                    </ul>
+                    <a href="quote.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">Request Quote</a>
+                </div>
+
+                <!-- Smart Home -->
+                <div id="smart" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="cpu" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Smart Home & Automation</h3>
+                    <p class="text-gray-600 mb-4">Modern automation solutions for lighting, security, entertainment, and energy management in residential and commercial spaces.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Smart lighting control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Home security systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Voice-controlled systems</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Energy monitoring</span>
+                        </li>
+                    </ul>
+                    <a href="quote.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-full transition duration-300">Request Quote</a>
+                </div>
+
+                <!-- Emergency -->
+                <div id="emergency" class="service-card bg-white p-6 rounded-lg shadow-md border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="alert-circle" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Emergency Call-Outs</h3>
+                    <p class="text-gray-600 mb-4">Immediate response to electrical emergencies including power failures, faults, and dangerous situations requiring urgent attention.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Power outage diagnosis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Dangerous fault repairs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Critical system restoration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="w-4 h-4 mt-1 mr-2 text-yellow-500"></i>
+                            <span>Hospital/industrial priority</span>
+                        </li>
+                    </ul>
+                    <a href="tel:+254796437936" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">Call Emergency</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Our Service Process</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">How we ensure quality and satisfaction in every project</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center text-center" data-aos="fade-up">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold text-yellow-600">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Consultation</h3>
+                    <p class="text-gray-600">We listen to understand your needs and assess the requirements.</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold text-yellow-600">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Planning</h3>
+                    <p class="text-gray-600">We design a customized solution with transparent pricing.</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold text-yellow-600">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Execution</h3>
+                    <p class="text-gray-600">Our certified technicians implement the solution professionally.</p>
+                </div>
+                <div class="flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <span class="text-2xl font-bold text-yellow-600">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Follow-up</h3>
+                    <p class="text-gray-600">We ensure your satisfaction with post-service support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-black text-white">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-6">Not Sure Which Service You Need?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Our experts can assess your situation and recommend the best solution.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="quote.html" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition duration-300">Get a Free Assessment</a>
+                <a href="tel:+254796437936" class="bg-white hover:bg-gray-100 text-black font-bold py-3 px-8 rounded-full transition duration-300 flex items-center justify-center gap-2">
+                    <i data-feather="phone"></i> Call for Advice
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <span class="text-yellow-400">ELWATT</span> <span class="ml-1">ELECTRICAL</span>
+                    </h3>
+                    <p class="text-gray-400 mb-4">Professional electrical services for residential, commercial, and industrial clients across Kenya.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+                        <a href="https://wa.me/254796437936" class="text-gray-400 hover:text-white transition"><i data-feather="message-circle"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-400 transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-400 transition">About Us</a></li>
+                        <li><a href="services.html" class="text-yellow-400 hover:text-yellow-300 transition">Services</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-yellow-400 transition">Projects</a></li>
+                        <li><a href="quote.html" class="text-gray-400 hover:text-yellow-400 transition">Get Quote</a></li>
+                        <li><a href="contact.html"
+</body>
+</html>

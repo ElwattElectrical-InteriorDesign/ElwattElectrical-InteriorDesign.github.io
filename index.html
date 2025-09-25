@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elwatt Electrical | Powering Homes & Businesses with Excellence</title>
+    <meta name="description" content="Professional electrical services in Kenya - residential, commercial, industrial wiring, solar installations, and 24/7 emergency support.">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://static.photos/cityscape/1200x630/5');
+            background-size: cover;
+            background-position: center;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+        }
+        .floating-contact {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-black text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center">
+                <span class="text-yellow-400">ELWATT</span> <span class="ml-1">ELECTRICAL</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="about.html" class="hover:text-yellow-400 transition">About</a>
+                <a href="services.html" class="hover:text-yellow-400 transition">Services</a>
+                <a href="projects.html" class="hover:text-yellow-400 transition">Projects</a>
+                <a href="quote.html" class="hover:text-yellow-400 transition">Get Quote</a>
+                <a href="contact.html" class="hover:text-yellow-400 transition">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black py-4 px-6 absolute w-full left-0">
+            <a href="index.html" class="block py-2 hover:text-yellow-400 transition">Home</a>
+            <a href="about.html" class="block py-2 hover:text-yellow-400 transition">About</a>
+            <a href="services.html" class="block py-2 hover:text-yellow-400 transition">Services</a>
+            <a href="projects.html" class="block py-2 hover:text-yellow-400 transition">Projects</a>
+            <a href="quote.html" class="block py-2 hover:text-yellow-400 transition">Get Quote</a>
+            <a href="contact.html" class="block py-2 hover:text-yellow-400 transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg text-white py-32 px-6 relative">
+        <div class="container mx-auto text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Powering Homes & Businesses with Excellence</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Licensed, reliable, and affordable electrical solutions for all your needs.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="quote.html" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-8 rounded-full transition duration-300">Get a Free Quote</a>
+                <a href="https://wa.me/254796437936" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 flex items-center justify-center gap-2">
+                    <i data-feather="message-circle"></i> WhatsApp Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="bg-yellow-50 py-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center" data-aos="fade-up">
+                    <i data-feather="award" class="w-12 h-12 text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">10+ Years of Experience</h3>
+                    <p class="text-gray-600">Trusted electrical expertise since 2013</p>
+                </div>
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <i data-feather="shield" class="w-12 h-12 text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Licensed & Insured</h3>
+                    <p class="text-gray-600">Fully certified for your peace of mind</p>
+                </div>
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                    <i data-feather="clock" class="w-12 h-12 text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">24/7 Emergency Support</h3>
+                    <p class="text-gray-600">Always available when you need us</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Our Electrical Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive solutions for residential, commercial, and industrial needs</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-100" data-aos="fade-up">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="home" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Residential Electrical</h3>
+                    <p class="text-gray-600 mb-4">Complete wiring, lighting, and power solutions for homes and apartments.</p>
+                    <a href="services.html#residential" class="text-yellow-600 font-medium hover:underline">Learn More →</a>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="building" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Commercial & Industrial</h3>
+                    <p class="text-gray-600 mb-4">Professional installations for offices, factories, and business premises.</p>
+                    <a href="services.html#commercial" class="text-yellow-600 font-medium hover:underline">Learn More →</a>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-md transition duration-300 border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="sun" class="w-8 h-8 text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Solar & Renewable Energy</h3>
+                    <p class="text-gray-600 mb-4">Sustainable power solutions including solar panel installations.</p>
+                    <a href="services.html#solar" class="text-yellow-600 font-medium hover:underline">Learn More →</a>
+                </div>
+            </div>
+            <div class="text-center mt-10" data-aos="fade-up">
+                <a href="services.html" class="inline-block bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Trusted by homeowners and businesses across Kenya</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
+                    <div class="flex mb-4">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Elwatt Electrical rewired our entire office building efficiently and professionally. Their team was punctual, clean, and completed the job ahead of schedule."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                        <div>
+                            <h4 class="font-bold">James Mwangi</h4>
+                            <p class="text-sm text-gray-500">Nairobi Business Park</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex mb-4">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"When our solar system failed at midnight, Elwatt's emergency team arrived within an hour. Their quick response saved our refrigeration units and thousands in inventory."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                        <div>
+                            <h4 class="font-bold">Sarah Wambui</h4>
+                            <p class="text-sm text-gray-500">Supermarket Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex mb-4">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The smart home automation system they installed has made our house more secure and energy efficient. Their attention to detail was impressive."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 w-10 h-10 rounded-full mr-3"></div>
+                        <div>
+                            <h4 class="font-bold">David Ochieng</h4>
+                            <p class="text-sm text-gray-500">Karen Residence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">Our Recent Projects</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Quality workmanship in every installation</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-lg" data-aos="fade-up">
+                    <img src="http://static.photos/office/640x360/1" alt="Office Wiring Project" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white p-4">
+                            <h3 class="text-xl font-bold mb-2">Office Wiring - Nairobi</h3>
+                            <p class="mb-4">Complete electrical installation for 5-story office building</p>
+                            <a href="projects.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-full transition duration-300">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="http://static.photos/home/640x360/2" alt="Residential Solar Installation" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white p-4">
+                            <h3 class="text-xl font-bold mb-2">Solar Installation - Runda</h3>
+                            <p class="mb-4">5kW solar system with battery backup</p>
+                            <a href="projects.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-full transition duration-300">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <img src="http://static.photos/industry/640x360/3" alt="Industrial Electrical Work" class="w-full h-64 object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="text-center text-white p-4">
+                            <h3 class="text-xl font-bold mb-2">Factory Upgrade - Thika</h3>
+                            <p class="mb-4">Electrical system overhaul for manufacturing plant</p>
+                            <a href="projects.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-full transition duration-300">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10" data-aos="fade-up">
+                <a href="projects.html" class="inline-block bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-yellow-500 text-black">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-6">Ready to Power Your Property?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Contact us today for a free consultation and quote.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="quote.html" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300">Get a Free Quote</a>
+                <a href="tel:+254796437936" class="bg-white hover:bg-gray-100 text-black font-bold py-3 px-8 rounded-full transition duration-300 flex items-center justify-center gap-2">
+                    <i data-feather="phone"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <span class="text-yellow-400">ELWATT</span> <span class="ml-1">ELECTRICAL</span>
+                    </h3>
+                    <p class="text-gray-400 mb-4">Professional electrical services for residential, commercial, and industrial clients across Kenya.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+                        <a href="https://wa.me/254796437936" class="text-gray-400 hover:text-white transition"><i data-feather="message-circle"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-yellow-400 transition">Home</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-400 transition">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-yellow-400 transition">Services</a></li>
+                        <li><a href="projects.html" class="text-gray-400 hover:text-yellow-400 transition">Projects</a></li>
+                        <li><a href="quote.html" class="text-gray-400 hover:text-yellow-400 transition">Get Quote</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#residential" class="text-gray-400 hover:text-yellow-400 transition">Residential Electrical</a></li>
+                        <li><a href="services.html#commercial" class="text-gray-400 hover:text-yellow-400 transition">Commercial Installations</a></li>
+                        <li><a href="services.html#solar" class="text-gray-400 hover:text-yellow-400 transition">Solar Systems</a></li>
+                        <li><a href="services.html#repairs" class="text-gray-400 hover:text-yellow-400 transition">Repairs & Maintenance</a></li>
+                        <li><a href="services.html#smart" class="text-gray-400 hover:text-yellow-400 transition">Smart Home Automation</a></li>
+                        <li><a href="services.html#emergency" class="text-gray-400 hover:text-yellow-400 transition">Emergency Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i data-feather="phone" class="w-5 h-5 mt-1 mr-3 text-yellow-400"></i>
+                            <a href="tel:+254796437936" class="text-gray-400 hover:text-yellow-400 transition">+254 796 437 936</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="mail" class="w-5 h-5 mt-1 mr-3 text-yellow-400"></i>
+                            <a href="mailto:elwattelctrical@gmail.com" class="text-gray-400 hover:text-yellow-400 transition">elwattelctrical@gmail.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="w-5 h-5 mt-1 mr-3 text-yellow-400"></i>
+                            <span class="text-gray-400">Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="clock" class="w-5 h-5 mt-1 mr-3 text-yellow-400"></i>
+                            <span class="text-gray-400">Mon-Sat: 8am-6pm<br>Emergency: 24/7</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+                <p>© 2025 Elwatt Electrical. All rights reserved. | Powered by Ma Creatives</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/254796437936" class="floating-contact bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition duration-300">
+            <i data-feather="message-circle" class="w-8 h-8"></i>
+        </a>
+    </div>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Vanta.js background for hero section
+        VANTA.GLOBE({
+            el: "#hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xfbbf24,
+            backgroundColor: 0x0,
+            size: 0.8
+        });
+    </script>
+    <script>feather.replace();</script>
+</body>
+</html>
