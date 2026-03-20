@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elwatt Electrical &amp; Interior Design</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: '#F5C518',
+        brandDark: '#E0B200',
+        dark: '#0A0A0A',
+        darkGray: '#1A1A1A',
+        lightBg: '#F7F7F5',
+        accent: '#25D366',
+        accentDark: '#1DA851',
+      }
+    }
+  }
+}
+</script>
+  <style>
+html { height: 100%; }
+body { height: 100%; margin: 0; font-family: 'DM Sans', sans-serif; }
+
+.font-heading { font-family: 'Outfit', sans-serif; }
+
+/* Page transitions */
+.page { display: none; opacity: 0; transition: opacity 0.3s ease; }
+.page.active { display: block; opacity: 1; }
+
+/* Smooth scroll behavior */
+* { scroll-behavior: smooth; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #F5C518; border-radius: 3px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.7s ease forwards; }
+.animate-slide-left { animation: slideInLeft 0.6s ease forwards; }
+.animate-scale-in { animation: scaleIn 0.5s ease forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* Card hover effects */
+.card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+/* Button shine effect */
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+.btn-shine:hover::after { left: 120%; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #F5C518 0%, #FF8C00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero pattern */
+.hero-pattern {
+  background-image: radial-gradient(circle at 20% 50%, rgba(245,197,24,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(245,197,24,0.05) 0%, transparent 40%);
+}
+
+/* Mobile menu */
+.mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+.mobile-menu.open { transform: translateX(0); }
+
+/* Before/After slider */
+.ba-container { position: relative; overflow: hidden; cursor: ew-resize; }
+.ba-after { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
+.ba-slider { position: absolute; top: 0; bottom: 0; width: 4px; background: #F5C518; cursor: ew-resize; z-index: 10; }
+.ba-slider::after {
+  content: '⟨⟩';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: #F5C518;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0A0A0A;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Star rating */
+.star { color: #F5C518; }
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+/* Timeline */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #F5C518, #E0B200);
+}
+
+/* Filter buttons */
+.filter-btn.active { background: #F5C518; color: #0A0A0A; }
+
+/* Quote form success */
+.form-success { display: none; }
+.form-success.show { display: flex; }
+
+/* Notification toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  transform: translateX(120%);
+  transition: transform 0.4s ease;
+}
+.toast.show { transform: translateX(0); }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-white"><!-- Toast Notification -->
+   <div id="toast" class="toast bg-dark text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3"><i data-lucide="check-circle" class="text-brand" style="width:20px;height:20px;"></i> <span id="toast-msg" class="text-sm font-medium">Message sent!</span>
+   </div><!-- Sticky Header -->
+   <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16 md:h-20"><!-- Logo -->
+      <div class="flex items-center gap-1 cursor-pointer" onclick="navigateTo('home')">
+       <div class="flex items-center">
+        <svg width="36" height="36" viewbox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#F5C518" /> <path d="M12 10h10v4H16v4h5v4h-5v4h6v4H12V10z" fill="#0A0A0A" /> <path d="M24 10h4v20h-4V10z" fill="#0A0A0A" />
+        </svg>
+        <div class="ml-2"><span class="font-heading font-bold text-dark text-sm leading-tight block tracking-tight cursor-pointer hover:text-brand transition-colors" onclick="event.stopPropagation();navigateTo('services')">ELWATT ELECTRICAL</span> <span class="font-heading font-medium text-xs text-gray-500 leading-tight block tracking-wider cursor-pointer hover:text-brand transition-colors" onclick="event.stopPropagation();navigateTo('interior')">&amp; INTERIOR DESIGN</span>
+        </div>
+       </div>
+      </div><!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-1"><a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('home')">Home</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('services')">Services</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('projects')">Projects</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('interior')">Interior Design</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('testimonials')">Testimonials</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('blog')">Blog</a> <a class="nav-link px-3 py-2 text-sm font-medium text-gray-700 hover:text-dark rounded-lg hover:bg-gray-50 transition-all cursor-pointer" onclick="navigateTo('contact')">Contact</a>
+      </nav><!-- CTA -->
+      <div class="hidden lg:flex items-center gap-3"><button onclick="navigateTo('quote')" class="btn-shine bg-brand hover:bg-brandDark text-dark font-heading font-bold text-sm px-5 py-2.5 rounded-full transition-all shadow-lg shadow-brand/20">Get Quote</button>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleMobileMenu()"> <i data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+     </div>
+    </div>
+   </header><!-- Mobile Menu Overlay -->
+   <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" onclick="toggleMobileMenu()"></div>
+   <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-80 bg-white z-50 shadow-2xl">
+    <div class="p-6">
+     <div class="flex items-center justify-between mb-8"><span class="font-heading font-bold text-dark">Menu</span> <button onclick="toggleMobileMenu()" class="p-2 rounded-lg hover:bg-gray-100"><i data-lucide="x" style="width:24px;height:24px;"></i></button>
+     </div>
+     <nav class="flex flex-col gap-1"><a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('home');toggleMobileMenu()">Home</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('services');toggleMobileMenu()">Services</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('projects');toggleMobileMenu()">Projects</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('interior');toggleMobileMenu()">Interior Design</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('testimonials');toggleMobileMenu()">Testimonials</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('blog');toggleMobileMenu()">Blog</a> <a class="px-4 py-3 text-base font-medium text-gray-700 hover:text-dark hover:bg-gray-50 rounded-xl transition-all cursor-pointer" onclick="navigateTo('contact');toggleMobileMenu()">Contact</a>
+     </nav>
+     <div class="mt-6 pt-6 border-t"><button onclick="navigateTo('quote');toggleMobileMenu()" class="w-full bg-brand hover:bg-brandDark text-dark font-heading font-bold py-3 rounded-full transition-all">Get Quote</button> <a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="mt-3 w-full flex items-center justify-center gap-2 bg-accent hover:bg-accentDark text-white font-bold py-3 rounded-full transition-all"> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> WhatsApp </a>
+     </div>
+    </div>
+   </div><!-- ==================== HOME PAGE ==================== -->
+   <div id="page-home" class="page active"><!-- Hero Section -->
+    <section class="hero-pattern relative pt-20 md:pt-24 overflow-hidden" style="background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #2A2A1A 100%); min-height: 90%;">
+     <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-brand rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand rounded-full blur-3xl"></div>
+     </div>
+     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+       <div>
+        <div class="animate-fade-in-up opacity-0 inline-flex items-center gap-2 bg-brand/10 border border-brand/20 rounded-full px-4 py-1.5 mb-6"><span class="w-2 h-2 bg-brand rounded-full animate-pulse"></span> <span class="text-brand text-sm font-medium">Trusted in Kenya since 2018</span>
+        </div>
+        <h1 id="hero-headline" class="animate-fade-in-up opacity-0 delay-100 font-heading font-900 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-tight tracking-tight">Powering Spaces.<br><span class="gradient-text">Designing Dreams.</span></h1>
+        <p id="hero-subtext" class="animate-fade-in-up opacity-0 delay-200 mt-6 text-lg sm:text-xl text-gray-400 max-w-lg leading-relaxed">Reliable Electrical &amp; Interior Solutions in Kenya — from wiring to breathtaking interiors.</p>
+        <div class="animate-fade-in-up opacity-0 delay-300 flex flex-wrap gap-4 mt-8"><button onclick="navigateTo('quote')" class="btn-shine bg-brand hover:bg-brandDark text-dark font-heading font-bold px-8 py-4 rounded-full text-base transition-all shadow-lg shadow-brand/30 flex items-center gap-2"> Get Free Quote <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button> <a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="btn-shine bg-accent hover:bg-accentDark text-white font-heading font-bold px-8 py-4 rounded-full text-base transition-all flex items-center gap-2"> <i data-lucide="message-circle" style="width:18px;height:18px;"></i> WhatsApp Now </a>
+        </div><!-- Stats -->
+        <div class="animate-fade-in-up opacity-0 delay-400 grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
+         <div>
+          <div class="font-heading font-bold text-2xl sm:text-3xl text-brand">
+           200+
+          </div>
+          <div class="text-gray-500 text-sm mt-1">
+           Projects Done
+          </div>
+         </div>
+         <div>
+          <div class="font-heading font-bold text-2xl sm:text-3xl text-brand">
+           6+
+          </div>
+          <div class="text-gray-500 text-sm mt-1">
+           Years Experience
+          </div>
+         </div>
+         <div>
+          <div class="font-heading font-bold text-2xl sm:text-3xl text-brand">
+           98%
+          </div>
+          <div class="text-gray-500 text-sm mt-1">
+           Client Satisfaction
+          </div>
+         </div>
+        </div>
+       </div><!-- Hero Visual -->
+       <div class="animate-scale-in opacity-0 delay-300 hidden lg:block">
+        <div class="relative">
+         <div class="absolute -inset-4 bg-brand/20 rounded-3xl blur-2xl"></div>
+         <div class="relative bg-gradient-to-br from-darkGray to-dark rounded-3xl p-8 border border-white/10">
+          <div class="grid grid-cols-2 gap-4">
+           <div class="bg-brand/10 rounded-2xl p-6 text-center border border-brand/20 card-hover"><i data-lucide="zap" class="mx-auto text-brand" style="width:40px;height:40px;"></i>
+            <p class="text-white font-heading font-semibold mt-3 text-sm">Electrical</p>
+           </div>
+           <div class="bg-brand/10 rounded-2xl p-6 text-center border border-brand/20 card-hover"><i data-lucide="palette" class="mx-auto text-brand" style="width:40px;height:40px;"></i>
+            <p class="text-white font-heading font-semibold mt-3 text-sm">Interior</p>
+           </div>
+           <div class="bg-brand/10 rounded-2xl p-6 text-center border border-brand/20 card-hover"><i data-lucide="sun" class="mx-auto text-brand" style="width:40px;height:40px;"></i>
+            <p class="text-white font-heading font-semibold mt-3 text-sm">Solar</p>
+           </div>
+           <div class="bg-brand/10 rounded-2xl p-6 text-center border border-brand/20 card-hover"><i data-lucide="shield-check" class="mx-auto text-brand" style="width:40px;height:40px;"></i>
+            <p class="text-white font-heading font-semibold mt-3 text-sm">Smart Home</p>
+           </div>
+          </div>
+          <div class="mt-4 bg-white/5 rounded-xl p-4 border border-white/10">
+           <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center"><i data-lucide="check" class="text-dark" style="width:20px;height:20px;"></i>
+            </div>
+            <div>
+             <p class="text-white font-semibold text-sm">Licensed &amp; Certified</p>
+             <p class="text-gray-500 text-xs">Professional standards guaranteed</p>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Scroll indicator -->
+     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"><i data-lucide="chevron-down" class="text-brand/50" style="width:28px;height:28px;"></i>
+     </div>
+    </section><!-- Services Preview -->
+    <section class="py-20 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14"><span class="inline-block bg-brand/10 text-dark font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Our Services</span>
+       <h2 class="font-heading font-800 text-3xl sm:text-4xl lg:text-5xl text-dark">What We <span class="gradient-text">Do Best</span></h2>
+       <p class="mt-4 text-gray-500 max-w-2xl mx-auto">From complex electrical installations to stunning interior transformations — we deliver excellence.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Service Cards -->
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('services')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="zap" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">House Wiring</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Professional electrical wiring for new builds and renovations with certified safety.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('services')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="sun" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Solar Installation</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Cut electricity costs with reliable solar panel systems designed for Kenyan homes.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('services')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="shield" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">CCTV &amp; Security</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Complete security camera installation and monitoring systems for peace of mind.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('interior')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="palette" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Interior Styling</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Transform any space with curated design solutions that blend style and comfort.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('interior')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="lightbulb" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Lighting Design</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Strategic lighting design that sets the mood, enhances spaces, and saves energy.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6 group cursor-pointer" onclick="navigateTo('services')">
+        <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-brand transition-colors"><i data-lucide="smartphone" class="text-brand group-hover:text-dark transition-colors" style="width:28px;height:28px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Smart Home</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Automate your home with smart switches, sensors, and integrated control systems.</p>
+        <div class="mt-4 flex items-center text-brand font-semibold text-sm gap-1 group-hover:gap-2 transition-all">
+         Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </div>
+       </div>
+      </div>
+      <div class="text-center mt-10"><button onclick="navigateTo('services')" class="bg-dark hover:bg-gray-800 text-white font-heading font-bold px-8 py-3.5 rounded-full transition-all inline-flex items-center gap-2"> View All Services <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+      </div>
+     </div>
+    </section><!-- CEO Section -->
+    <section class="py-20 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+       <div class="relative">
+        <div class="absolute -inset-4 bg-brand/10 rounded-3xl blur-xl"></div>
+        <div class="relative bg-gradient-to-br from-dark to-darkGray rounded-3xl p-1">
+         <div class="bg-dark rounded-3xl p-8 sm:p-12 text-center">
+          <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand to-brandDark flex items-center justify-center mb-6"><i data-lucide="user" class="text-dark" style="width:56px;height:56px;"></i>
+          </div>
+          <h3 id="ceo-name-display" class="font-heading font-bold text-2xl text-white">Eliud Wahome</h3>
+          <p class="text-brand font-medium mt-1">Founder &amp; Lead Engineer</p>
+          <div class="flex items-center justify-center gap-4 mt-4"><a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand/20 transition-colors"> <i data-lucide="message-circle" class="text-brand" style="width:18px;height:18px;"></i> </a> <a href="mailto:elwattelectrical@gmail.com" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand/20 transition-colors"> <i data-lucide="mail" class="text-brand" style="width:18px;height:18px;"></i> </a>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div><span class="inline-block bg-brand/10 text-dark font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Meet The Founder</span>
+        <h2 class="font-heading font-800 text-3xl sm:text-4xl text-dark leading-tight">Built on Passion,<br>
+         Driven by <span class="gradient-text">Excellence</span></h2>
+        <p class="mt-6 text-gray-600 leading-relaxed">With over 6 years in the electrical and interior design industry, Eng. Eliud Wahome founded Elwatt to bridge the gap between quality electrical work and premium interior design in Kenya.</p>
+        <p class="mt-4 text-gray-600 leading-relaxed">Every project is handled with precision, professionalism, and a commitment to exceeding client expectations — whether it's a simple wiring job or a complete home transformation.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+         <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-gray-100"><i data-lucide="award" class="text-brand" style="width:20px;height:20px;"></i> <span class="text-sm font-medium text-dark">Certified Engineer</span>
+         </div>
+         <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-gray-100"><i data-lucide="check-circle" class="text-brand" style="width:20px;height:20px;"></i> <span class="text-sm font-medium text-dark">Licensed Professional</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Featured Projects Preview -->
+    <section class="py-20 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14"><span class="inline-block bg-brand/10 text-dark font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Portfolio</span>
+       <h2 class="font-heading font-800 text-3xl sm:text-4xl lg:text-5xl text-dark">Featured <span class="gradient-text">Projects</span></h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div class="card-hover group rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-brand/20 to-brand/5 flex items-center justify-center relative overflow-hidden"><i data-lucide="home" class="text-brand/40" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-dark text-white text-xs font-bold px-3 py-1 rounded-full">
+          Electrical
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Residential Wiring — Kileleshwa</h3>
+         <p class="text-gray-500 text-sm mt-1">Complete house wiring for 4-bedroom home</p>
+        </div>
+       </div>
+       <div class="card-hover group rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative overflow-hidden"><i data-lucide="sun" class="text-green-400/60" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+          Solar
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Solar System — Ngong</h3>
+         <p class="text-gray-500 text-sm mt-1">5kW solar panel installation for off-grid home</p>
+        </div>
+       </div>
+       <div class="card-hover group rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center relative overflow-hidden"><i data-lucide="palette" class="text-purple-400/60" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          Interior
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Living Room Makeover — Westlands</h3>
+         <p class="text-gray-500 text-sm mt-1">Complete interior transformation with modern décor</p>
+        </div>
+       </div>
+      </div>
+      <div class="text-center mt-10"><button onclick="navigateTo('projects')" class="border-2 border-dark text-dark hover:bg-dark hover:text-white font-heading font-bold px-8 py-3.5 rounded-full transition-all inline-flex items-center gap-2"> View All Projects <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+      </div>
+     </div>
+    </section><!-- Testimonials Preview -->
+    <section class="py-20 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Testimonials</span>
+       <h2 class="font-heading font-800 text-3xl sm:text-4xl text-white">What Clients <span class="gradient-text">Say</span></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+       <div class="card-hover bg-white/5 border border-white/10 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">"Elwatt did an amazing job wiring our new house in Kileleshwa. Professional, timely, and the quality was outstanding."</p>
+        <div class="mt-5 flex items-center gap-3">
+         <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-sm">
+          JM
+         </div>
+         <div>
+          <p class="text-white font-semibold text-sm">James Mwangi</p>
+          <p class="text-gray-500 text-xs">Homeowner, Kileleshwa</p>
+         </div>
+        </div>
+       </div>
+       <div class="card-hover bg-white/5 border border-white/10 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">"The interior design team transformed our office space completely. Creative, functional, and on budget!"</p>
+        <div class="mt-5 flex items-center gap-3">
+         <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-sm">
+          AO
+         </div>
+         <div>
+          <p class="text-white font-semibold text-sm">Amina Odhiambo</p>
+          <p class="text-gray-500 text-xs">CEO, StartUp Hub</p>
+         </div>
+        </div>
+       </div>
+       <div class="card-hover bg-white/5 border border-white/10 rounded-2xl p-6">
+        <div class="flex gap-1 mb-4"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">"Installed solar panels for our home in Ngong. Saved us over 60% on electricity bills. Highly recommended!"</p>
+        <div class="mt-5 flex items-center gap-3">
+         <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-sm">
+          PK
+         </div>
+         <div>
+          <p class="text-white font-semibold text-sm">Peter Kamau</p>
+          <p class="text-gray-500 text-xs">Homeowner, Ngong</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Trust Badges -->
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+       <div class="text-center p-6">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i data-lucide="shield-check" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-dark">Licensed</h3>
+        <p class="text-gray-500 text-sm mt-1">Certified professionals</p>
+       </div>
+       <div class="text-center p-6">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i data-lucide="clock" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-dark">On Time</h3>
+        <p class="text-gray-500 text-sm mt-1">We deliver on schedule</p>
+       </div>
+       <div class="text-center p-6">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i data-lucide="thumbs-up" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-dark">Quality</h3>
+        <p class="text-gray-500 text-sm mt-1">Premium materials only</p>
+       </div>
+       <div class="text-center p-6">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><i data-lucide="headphones" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-dark">Support</h3>
+        <p class="text-gray-500 text-sm mt-1">24/7 available</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- CTA Section -->
+    <section class="py-20 bg-brand relative overflow-hidden">
+     <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-dark rounded-full blur-3xl"></div>
+     </div>
+     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading font-900 text-3xl sm:text-4xl lg:text-5xl text-dark">Ready to Start Your Project?</h2>
+      <p class="mt-4 text-dark/70 text-lg max-w-2xl mx-auto">Get a free, no-obligation quote from our team. We'll get back to you within 24 hours.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-8"><button onclick="navigateTo('quote')" class="btn-shine bg-dark hover:bg-gray-900 text-white font-heading font-bold px-8 py-4 rounded-full transition-all flex items-center gap-2"> Get Free Quote <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button> <a href="tel:+254796437936" class="bg-white hover:bg-gray-50 text-dark font-heading font-bold px-8 py-4 rounded-full transition-all flex items-center gap-2"> <i data-lucide="phone" style="width:18px;height:18px;"></i> Call Now </a>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== SERVICES PAGE ==================== -->
+   <div id="page-services" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Our Services</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Professional <span class="gradient-text">Services</span></h1>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Comprehensive electrical and interior design solutions tailored for Kenyan homes and businesses.</p>
+     </div>
+    </section><!-- Electrical Services -->
+    <section class="py-16 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-10">
+       <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center"><i data-lucide="zap" class="text-dark" style="width:24px;height:24px;"></i>
+       </div>
+       <h2 class="font-heading font-800 text-2xl sm:text-3xl text-dark">Electrical Services</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="home" class="text-blue-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">House Wiring &amp; Installation</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Complete electrical wiring for new constructions and renovations. Safe, code-compliant installations.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="alert-triangle" class="text-red-500" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Fault Detection &amp; Repairs</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Rapid diagnosis and repair of electrical faults, tripping issues, and power outages.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="sun" class="text-green-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Solar Installation</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Design and install solar panel systems to reduce energy costs and embrace sustainability.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="wrench" class="text-yellow-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Electrical Maintenance</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Routine checks and preventive maintenance to keep your electrical systems running smoothly.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="smartphone" class="text-purple-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Smart Home Systems</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Automate lighting, security, and appliances with cutting-edge smart home technology.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="video" class="text-gray-700" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">CCTV Installation</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Professional security camera installation with remote monitoring and cloud storage.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+      </div>
+     </div>
+    </section><!-- Interior Services -->
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-10">
+       <div class="w-12 h-12 bg-brand rounded-xl flex items-center justify-center"><i data-lucide="palette" class="text-dark" style="width:24px;height:24px;"></i>
+       </div>
+       <h2 class="font-heading font-800 text-2xl sm:text-3xl text-dark">Interior Design Services</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="layout" class="text-indigo-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Space Planning</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Optimize room layouts for maximum functionality, flow, and visual appeal.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="brush" class="text-pink-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Interior Styling</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Create cohesive, curated spaces with color palettes, textures, and décor selections.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="lightbulb" class="text-amber-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Lighting Design</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Strategic ambient, task, and accent lighting to transform the mood of any space.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="armchair" class="text-teal-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Furniture &amp; Décor Setup</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Source, select, and arrange furniture and décor that perfectly fits your vision.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+       <div class="card-hover bg-white border border-gray-100 rounded-2xl p-6">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4">
+         <i data-lucide="refresh-cw" class="text-orange-600" style="width:24px;height:24px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-lg text-dark">Office &amp; Home Makeovers</h3>
+        <p class="text-gray-500 text-sm mt-2 leading-relaxed">Complete space transformations from concept to reality — homes, offices, and retail.</p><button onclick="navigateTo('quote')" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Request Service <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+       </div>
+      </div>
+     </div>
+    </section><!-- Services CTA -->
+    <section class="py-16 bg-brand">
+     <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-heading font-900 text-3xl sm:text-4xl text-dark">Get a Free Quote Today</h2>
+      <p class="mt-3 text-dark/70 text-lg">Tell us about your project and we'll provide a detailed, no-obligation estimate.</p><button onclick="navigateTo('quote')" class="mt-6 btn-shine bg-dark hover:bg-gray-900 text-white font-heading font-bold px-8 py-4 rounded-full transition-all inline-flex items-center gap-2"> Request Quote <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+     </div>
+    </section>
+   </div><!-- ==================== PROJECTS PAGE ==================== -->
+   <div id="page-projects" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Portfolio</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Our <span class="gradient-text">Projects</span></h1>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Browse our latest completed projects across electrical, solar, and interior design.</p>
+     </div>
+    </section>
+    <section class="py-12 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Filters -->
+      <div class="flex flex-wrap gap-3 mb-10 justify-center"><button class="filter-btn active px-5 py-2 rounded-full text-sm font-heading font-semibold border border-gray-200 transition-all" onclick="filterProjects('all', this)">All</button> <button class="filter-btn px-5 py-2 rounded-full text-sm font-heading font-semibold border border-gray-200 transition-all text-gray-600 hover:bg-gray-50" onclick="filterProjects('electrical', this)">Electrical</button> <button class="filter-btn px-5 py-2 rounded-full text-sm font-heading font-semibold border border-gray-200 transition-all text-gray-600 hover:bg-gray-50" onclick="filterProjects('interior', this)">Interior</button> <button class="filter-btn px-5 py-2 rounded-full text-sm font-heading font-semibold border border-gray-200 transition-all text-gray-600 hover:bg-gray-50" onclick="filterProjects('solar', this)">Solar</button>
+      </div><!-- Projects Grid -->
+      <div id="projects-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="electrical">
+        <div class="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center relative"><i data-lucide="zap" class="text-blue-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          ⭐ Featured
+         </div>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Electrical
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">4-Bedroom House Wiring</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Kileleshwa, Nairobi</p>
+         <p class="text-gray-400 text-xs mt-2">Complete electrical installation including DB board, lighting, and power points.</p>
+        </div>
+       </div>
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="solar">
+        <div class="aspect-video bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center relative"><i data-lucide="sun" class="text-green-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          ⭐ Featured
+         </div>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Solar
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">5kW Off-Grid Solar System</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Ngong, Kajiado</p>
+         <p class="text-gray-400 text-xs mt-2">Complete off-grid solar with battery storage and inverter system.</p>
+        </div>
+       </div>
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="interior">
+        <div class="aspect-video bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center relative"><i data-lucide="palette" class="text-purple-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+          ⭐ Featured
+         </div>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Interior
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Modern Living Room Makeover</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Westlands, Nairobi</p>
+         <p class="text-gray-400 text-xs mt-2">Full interior transformation with custom furniture and lighting design.</p>
+        </div>
+       </div>
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="electrical">
+        <div class="aspect-video bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center relative"><i data-lucide="video" class="text-amber-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Electrical
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">16-Camera CCTV System</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Industrial Area, Nairobi</p>
+         <p class="text-gray-400 text-xs mt-2">Full security installation with remote monitoring for warehouse facility.</p>
+        </div>
+       </div>
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="interior">
+        <div class="aspect-video bg-gradient-to-br from-rose-100 to-rose-50 flex items-center justify-center relative"><i data-lucide="building" class="text-rose-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Interior
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Office Space Redesign</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Upper Hill, Nairobi</p>
+         <p class="text-gray-400 text-xs mt-2">Complete office interior redesign with modern workstations and meeting areas.</p>
+        </div>
+       </div>
+       <div class="project-card card-hover rounded-2xl overflow-hidden border border-gray-100" data-category="solar">
+        <div class="aspect-video bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center relative"><i data-lucide="battery-charging" class="text-emerald-300" style="width:48px;height:48px;"></i>
+         <div class="absolute top-3 right-3 bg-dark/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+          Solar
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Hybrid Solar System</h3>
+         <p class="text-gray-500 text-sm mt-1">📍 Karen, Nairobi</p>
+         <p class="text-gray-400 text-xs mt-2">10kW hybrid solar system with grid connection and battery backup.</p>
+        </div>
+       </div>
+      </div><!-- Trust Section -->
+      <div class="mt-16 bg-dark rounded-3xl p-8 sm:p-12">
+       <h3 class="font-heading font-800 text-2xl sm:text-3xl text-white text-center mb-8">Why Clients Trust <span class="gradient-text">Elwatt</span></h3>
+       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+         <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="award" class="text-brand" style="width:28px;height:28px;"></i>
+         </div>
+         <p class="text-white font-semibold text-sm">Certified Engineers</p>
+        </div>
+        <div class="text-center">
+         <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="shield-check" class="text-brand" style="width:28px;height:28px;"></i>
+         </div>
+         <p class="text-white font-semibold text-sm">Safety First</p>
+        </div>
+        <div class="text-center">
+         <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="clock" class="text-brand" style="width:28px;height:28px;"></i>
+         </div>
+         <p class="text-white font-semibold text-sm">On-Time Delivery</p>
+        </div>
+        <div class="text-center">
+         <div class="w-14 h-14 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="heart" class="text-brand" style="width:28px;height:28px;"></i>
+         </div>
+         <p class="text-white font-semibold text-sm">Client-Focused</p>
+        </div>
+       </div>
+      </div>
+      <div class="text-center mt-12"><button onclick="navigateTo('quote')" class="btn-shine bg-brand hover:bg-brandDark text-dark font-heading font-bold px-8 py-4 rounded-full transition-all inline-flex items-center gap-2"> Start Your Project With Us <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== INTERIOR DESIGN PAGE ==================== -->
+   <div id="page-interior" class="page">
+    <section class="pt-24 md:pt-28 pb-16 relative overflow-hidden" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+     <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-10 right-20 w-80 h-80 bg-brand rounded-full blur-3xl"></div>
+     </div>
+     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-3xl"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Interior Design</span>
+       <h1 class="font-heading font-900 text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">Transforming Spaces with <span class="gradient-text">Style &amp; Precision</span></h1>
+       <p class="mt-6 text-gray-300 text-lg max-w-xl">From concept to completion — we create interiors that inspire, comfort, and elevate everyday living.</p>
+       <div class="flex flex-wrap gap-4 mt-8"><button onclick="navigateTo('quote')" class="btn-shine bg-brand hover:bg-brandDark text-dark font-heading font-bold px-8 py-4 rounded-full transition-all flex items-center gap-2"> Book Consultation <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+       </div>
+      </div>
+     </div>
+    </section><!-- Benefits -->
+    <section class="py-16 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+       <div class="text-center p-8 rounded-2xl border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-5"><i data-lucide="heart" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-dark">Comfort</h3>
+        <p class="text-gray-500 text-sm mt-3 leading-relaxed">Spaces designed for how you actually live — functional, welcoming, and deeply comfortable.</p>
+       </div>
+       <div class="text-center p-8 rounded-2xl border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-5"><i data-lucide="eye" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-dark">Aesthetics</h3>
+        <p class="text-gray-500 text-sm mt-3 leading-relaxed">Curated color palettes, textures, and décor that create visually stunning environments.</p>
+       </div>
+       <div class="text-center p-8 rounded-2xl border border-gray-100 card-hover">
+        <div class="w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center mx-auto mb-5"><i data-lucide="settings" class="text-brand" style="width:32px;height:32px;"></i>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-dark">Functionality</h3>
+        <p class="text-gray-500 text-sm mt-3 leading-relaxed">Every element serves a purpose — optimized layouts that maximize space and utility.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Interior Services Detail -->
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading font-800 text-3xl text-dark text-center mb-12">Our Interior <span class="gradient-text">Services</span></h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+       <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover flex gap-5">
+        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="layout" class="text-brand" style="width:24px;height:24px;"></i>
+        </div>
+        <div>
+         <h3 class="font-heading font-bold text-lg text-dark">Space Planning</h3>
+         <p class="text-gray-500 text-sm mt-1">Strategic room layouts for maximum flow and functionality.</p>
+        </div>
+       </div>
+       <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover flex gap-5">
+        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="brush" class="text-brand" style="width:24px;height:24px;"></i>
+        </div>
+        <div>
+         <h3 class="font-heading font-bold text-lg text-dark">Interior Styling</h3>
+         <p class="text-gray-500 text-sm mt-1">Color palettes, textures, and décor that tell your story.</p>
+        </div>
+       </div>
+       <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover flex gap-5">
+        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="lightbulb" class="text-brand" style="width:24px;height:24px;"></i>
+        </div>
+        <div>
+         <h3 class="font-heading font-bold text-lg text-dark">Lighting Design</h3>
+         <p class="text-gray-500 text-sm mt-1">Ambient, task, and accent lighting for the perfect mood.</p>
+        </div>
+       </div>
+       <div class="bg-white rounded-2xl p-6 border border-gray-100 card-hover flex gap-5">
+        <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0">
+         <i data-lucide="armchair" class="text-brand" style="width:24px;height:24px;"></i>
+        </div>
+        <div>
+         <h3 class="font-heading font-bold text-lg text-dark">Furniture &amp; Décor</h3>
+         <p class="text-gray-500 text-sm mt-1">Sourced and curated pieces that complete your space.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Interior Gallery -->
+    <section class="py-16 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading font-800 text-3xl text-dark text-center mb-12">Before &amp; <span class="gradient-text">After</span></h2>
+      <div class="grid md:grid-cols-2 gap-8">
+       <div class="rounded-2xl overflow-hidden border border-gray-100">
+        <div class="grid grid-cols-2">
+         <div class="aspect-square bg-gray-200 flex items-center justify-center p-4">
+          <div class="text-center">
+           <i data-lucide="frown" class="text-gray-400 mx-auto mb-2" style="width:32px;height:32px;"></i>
+           <p class="text-gray-500 text-xs font-medium">Before</p>
+          </div>
+         </div>
+         <div class="aspect-square bg-gradient-to-br from-brand/20 to-brand/5 flex items-center justify-center p-4">
+          <div class="text-center">
+           <i data-lucide="smile" class="text-brand mx-auto mb-2" style="width:32px;height:32px;"></i>
+           <p class="text-brand text-xs font-medium">After</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Living Room — Kilimani</h3>
+         <p class="text-gray-500 text-sm mt-1">Complete makeover with modern furniture and ambient lighting.</p>
+        </div>
+       </div>
+       <div class="rounded-2xl overflow-hidden border border-gray-100">
+        <div class="grid grid-cols-2">
+         <div class="aspect-square bg-gray-200 flex items-center justify-center p-4">
+          <div class="text-center">
+           <i data-lucide="frown" class="text-gray-400 mx-auto mb-2" style="width:32px;height:32px;"></i>
+           <p class="text-gray-500 text-xs font-medium">Before</p>
+          </div>
+         </div>
+         <div class="aspect-square bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center p-4">
+          <div class="text-center">
+           <i data-lucide="smile" class="text-purple-500 mx-auto mb-2" style="width:32px;height:32px;"></i>
+           <p class="text-purple-500 text-xs font-medium">After</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-5">
+         <h3 class="font-heading font-bold text-dark">Master Bedroom — Lavington</h3>
+         <p class="text-gray-500 text-sm mt-1">Elegant bedroom design with custom headboard and lighting.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="py-16 bg-brand">
+     <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="font-heading font-900 text-3xl sm:text-4xl text-dark">Book Your Interior Consultation</h2>
+      <p class="mt-3 text-dark/70 text-lg">Let's discuss your vision and create something extraordinary together.</p><button onclick="navigateTo('quote')" class="mt-6 btn-shine bg-dark hover:bg-gray-900 text-white font-heading font-bold px-8 py-4 rounded-full transition-all inline-flex items-center gap-2"> Book Consultation <i data-lucide="arrow-right" style="width:18px;height:18px;"></i> </button>
+     </div>
+    </section>
+   </div><!-- ==================== TESTIMONIALS PAGE ==================== -->
+   <div id="page-testimonials" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Testimonials</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Client <span class="gradient-text">Stories</span></h1>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Hear from the people who trust Elwatt with their spaces.</p>
+     </div>
+    </section>
+    <section class="py-16 bg-white">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Video-style testimonials -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+       <div class="card-hover bg-dark rounded-2xl p-6">
+        <div class="aspect-video bg-darkGray rounded-xl flex items-center justify-center mb-5 relative">
+         <div class="w-16 h-16 bg-brand/20 rounded-full flex items-center justify-center">
+          <i data-lucide="play" class="text-brand ml-1" style="width:32px;height:32px;"></i>
+         </div>
+         <div class="absolute bottom-3 left-3 bg-brand text-dark text-xs font-bold px-3 py-1 rounded-full">
+          📹 Video Testimonial
+         </div>
+        </div>
+        <div class="flex gap-1 mb-3">
+         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">"Elwatt completely rewired our home and installed a beautiful smart lighting system. The team was professional, clean, and finished ahead of schedule."</p>
+        <div class="mt-5 flex items-center gap-3">
+         <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-sm">
+          WN
+         </div>
+         <div>
+          <p class="text-white font-semibold text-sm">Wanjiku Ndung'u</p>
+          <p class="text-gray-500 text-xs">Homeowner, Runda</p>
+         </div>
+        </div>
+       </div>
+       <div class="card-hover bg-dark rounded-2xl p-6">
+        <div class="aspect-video bg-darkGray rounded-xl flex items-center justify-center mb-5 relative">
+         <div class="w-16 h-16 bg-brand/20 rounded-full flex items-center justify-center">
+          <i data-lucide="play" class="text-brand ml-1" style="width:32px;height:32px;"></i>
+         </div>
+         <div class="absolute bottom-3 left-3 bg-brand text-dark text-xs font-bold px-3 py-1 rounded-full">
+          📹 Video Testimonial
+         </div>
+        </div>
+        <div class="flex gap-1 mb-3">
+         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">"The interior design team gave our restaurant a completely new identity. Our customers love the ambience and we've seen increased foot traffic since the makeover!"</p>
+        <div class="mt-5 flex items-center gap-3">
+         <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-sm">
+          MO
+         </div>
+         <div>
+          <p class="text-white font-semibold text-sm">Mohamed Omar</p>
+          <p class="text-gray-500 text-xs">Restaurant Owner, Kilimani</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Written reviews -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+       <div class="card-hover bg-lightBg rounded-2xl p-6">
+        <div class="flex gap-1 mb-3">
+         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">"Best electrician in Nairobi. Fast, clean work and very reasonable pricing."</p>
+        <div class="mt-4 flex items-center gap-3">
+         <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-xs">
+          JK
+         </div>
+         <p class="text-dark font-semibold text-sm">John Kariuki</p>
+        </div>
+       </div>
+       <div class="card-hover bg-lightBg rounded-2xl p-6">
+        <div class="flex gap-1 mb-3">
+         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">"Our solar system has cut our electricity bill by 70%! Couldn't be happier."</p>
+        <div class="mt-4 flex items-center gap-3">
+         <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-xs">
+          GW
+         </div>
+         <p class="text-dark font-semibold text-sm">Grace Wairimu</p>
+        </div>
+       </div>
+       <div class="card-hover bg-lightBg rounded-2xl p-6">
+        <div class="flex gap-1 mb-3">
+         <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star text-gray-300">★</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed">"Transformed our office into a modern workspace. The team was creative and efficient."</p>
+        <div class="mt-4 flex items-center gap-3">
+         <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center font-heading font-bold text-dark text-xs">
+          DM
+         </div>
+         <p class="text-dark font-semibold text-sm">David Mutiso</p>
+        </div>
+       </div>
+      </div><!-- Experience Timeline -->
+      <div class="mb-16">
+       <h2 class="font-heading font-800 text-3xl text-dark text-center mb-12">Our <span class="gradient-text">Journey</span></h2>
+       <div class="max-w-3xl mx-auto space-y-8">
+        <div class="flex gap-6 items-start">
+         <div class="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center flex-shrink-0 font-heading font-bold text-dark">
+          2018
+         </div>
+         <div>
+          <h3 class="font-heading font-bold text-dark">Founded</h3>
+          <p class="text-gray-500 text-sm mt-1">Elwatt Electrical established by Eng. Eliud Wahome in Nairobi.</p>
+         </div>
+        </div>
+        <div class="flex gap-6 items-start">
+         <div class="w-16 h-16 bg-brand/20 rounded-2xl flex items-center justify-center flex-shrink-0 font-heading font-bold text-dark">
+          2020
+         </div>
+         <div>
+          <h3 class="font-heading font-bold text-dark">Interior Division Launched</h3>
+          <p class="text-gray-500 text-sm mt-1">Expanded into interior design services to offer complete space solutions.</p>
+         </div>
+        </div>
+        <div class="flex gap-6 items-start">
+         <div class="w-16 h-16 bg-brand/20 rounded-2xl flex items-center justify-center flex-shrink-0 font-heading font-bold text-dark">
+          2022
+         </div>
+         <div>
+          <h3 class="font-heading font-bold text-dark">100+ Projects Milestone</h3>
+          <p class="text-gray-500 text-sm mt-1">Completed over 100 successful projects across Kenya.</p>
+         </div>
+        </div>
+        <div class="flex gap-6 items-start">
+         <div class="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center flex-shrink-0 font-heading font-bold text-dark">
+          2024
+         </div>
+         <div>
+          <h3 class="font-heading font-bold text-dark">200+ Projects &amp; Growing</h3>
+          <p class="text-gray-500 text-sm mt-1">Now one of Kenya's trusted names in electrical and interior design.</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Certifications -->
+      <div class="bg-dark rounded-3xl p-8 sm:p-12 text-center">
+       <h3 class="font-heading font-800 text-2xl text-white mb-6">Certifications &amp; <span class="gradient-text">Qualifications</span></h3>
+       <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white/5 rounded-xl p-5 border border-white/10"><i data-lucide="award" class="text-brand mx-auto" style="width:32px;height:32px;"></i>
+         <p class="text-white font-semibold text-sm mt-3">Electrical Engineering</p>
+         <p class="text-gray-500 text-xs mt-1">Licensed &amp; Certified</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5 border border-white/10"><i data-lucide="file-text" class="text-brand mx-auto" style="width:32px;height:32px;"></i>
+         <p class="text-white font-semibold text-sm mt-3">ERC Compliance</p>
+         <p class="text-gray-500 text-xs mt-1">Energy Regulatory Approved</p>
+        </div>
+        <div class="bg-white/5 rounded-xl p-5 border border-white/10"><i data-lucide="shield" class="text-brand mx-auto" style="width:32px;height:32px;"></i>
+         <p class="text-white font-semibold text-sm mt-3">Safety Standards</p>
+         <p class="text-gray-500 text-xs mt-1">KEBS &amp; ISO Compliant</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== QUOTE PAGE ==================== -->
+   <div id="page-quote" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Get Started</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Get a <span class="gradient-text">Free Quote</span></h1>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Fill in the form below and we'll get back to you within 24 hours with a detailed estimate.</p>
+     </div>
+    </section>
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-2xl mx-auto px-4 sm:px-6"><!-- Form -->
+      <div id="quote-form-container" class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-gray-100">
+       <form id="quote-form" onsubmit="handleQuoteSubmit(event)">
+        <div class="space-y-5">
+         <div><label for="q-name" class="block text-sm font-semibold text-dark mb-2">Full Name *</label> <input type="text" id="q-name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="e.g. John Mwangi">
+         </div>
+         <div class="grid sm:grid-cols-2 gap-5">
+          <div><label for="q-phone" class="block text-sm font-semibold text-dark mb-2">Phone Number *</label> <input type="tel" id="q-phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="0712 345 678">
+          </div>
+          <div><label for="q-whatsapp" class="block text-sm font-semibold text-dark mb-2">WhatsApp Number</label> <input type="tel" id="q-whatsapp" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="Same as phone?">
+          </div>
+         </div>
+         <div><label for="q-location" class="block text-sm font-semibold text-dark mb-2">Location *</label> <input type="text" id="q-location" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="e.g. Westlands, Nairobi">
+         </div>
+         <div><label for="q-service" class="block text-sm font-semibold text-dark mb-2">Service Needed *</label> <select id="q-service" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm bg-white"> <option value="">Select a service...</option> <optgroup label="Electrical Services"> <option>House Wiring &amp; Installation</option> <option>Fault Detection &amp; Repairs</option> <option>Solar Installation</option> <option>Electrical Maintenance</option> <option>Smart Home Systems</option> <option>CCTV Installation</option> </optgroup> <optgroup label="Interior Design Services"> <option>Space Planning</option> <option>Interior Styling</option> <option>Lighting Design</option> <option>Furniture &amp; Décor Setup</option> <option>Office &amp; Home Makeovers</option> </optgroup> <option>Other</option> </select>
+         </div>
+         <div><label for="q-desc" class="block text-sm font-semibold text-dark mb-2">Description of Work</label> <textarea id="q-desc" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm resize-none" placeholder="Briefly describe your project..."></textarea>
+         </div>
+         <div><label class="block text-sm font-semibold text-dark mb-2">Upload Images (optional)</label>
+          <div class="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-brand transition-colors cursor-pointer" onclick="document.getElementById('q-files').click()"><i data-lucide="upload" class="mx-auto text-gray-400 mb-2" style="width:28px;height:28px;"></i>
+           <p class="text-gray-500 text-sm">Click to upload images</p>
+           <p class="text-gray-400 text-xs mt-1">PNG, JPG up to 5MB</p><input type="file" id="q-files" multiple accept="image/*" class="hidden">
+          </div>
+         </div>
+        </div><button type="submit" id="quote-submit-btn" class="mt-8 w-full btn-shine bg-brand hover:bg-brandDark text-dark font-heading font-bold py-4 rounded-full transition-all text-lg flex items-center justify-center gap-2"> Request Quote <i data-lucide="send" style="width:20px;height:20px;"></i> </button>
+       </form>
+      </div><!-- Success Message (hidden by default) -->
+      <div id="quote-success" class="form-success bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 flex-col items-center text-center">
+       <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"><i data-lucide="check-circle" class="text-green-600" style="width:40px;height:40px;"></i>
+       </div>
+       <h2 class="font-heading font-bold text-2xl text-dark">Quote Requested!</h2>
+       <p class="text-gray-500 mt-3">We will contact you within 24 hours with a detailed estimate.</p>
+       <p class="text-gray-400 text-sm mt-2">Check your WhatsApp for a confirmation message.</p><button onclick="resetQuoteForm()" class="mt-6 bg-brand hover:bg-brandDark text-dark font-heading font-bold px-6 py-3 rounded-full transition-all">Submit Another Request</button>
+      </div>
+      <div class="mt-8 text-center">
+       <p class="text-gray-500 text-sm">Prefer to talk? Call us directly:</p><a href="tel:+254796437936" class="text-dark font-heading font-bold text-lg hover:text-brand transition-colors" id="phone-display">+254 796 437 936</a>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== CONTACT PAGE ==================== -->
+   <div id="page-contact" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Contact Us</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Get In <span class="gradient-text">Touch</span></h1>
+     </div>
+    </section>
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Info -->
+       <div>
+        <h2 class="font-heading font-800 text-2xl text-dark mb-8">Reach Out To Us</h2>
+        <div class="space-y-5"><a href="tel:+254796437936" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center">
+           <i data-lucide="phone" class="text-brand" style="width:24px;height:24px;"></i>
+          </div>
+          <div>
+           <p class="text-gray-500 text-xs">Phone</p>
+           <p class="text-dark font-semibold" id="contact-phone">+254 796 437 936</p>
+          </div></a> <a href="mailto:elwattelectrical@gmail.com" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center">
+           <i data-lucide="mail" class="text-brand" style="width:24px;height:24px;"></i>
+          </div>
+          <div>
+           <p class="text-gray-500 text-xs">Email</p>
+           <p class="text-dark font-semibold" id="contact-email">elwattelectrical@gmail.com</p>
+          </div></a> <a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 card-hover">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+           <i data-lucide="message-circle" class="text-accent" style="width:24px;height:24px;"></i>
+          </div>
+          <div>
+           <p class="text-gray-500 text-xs">WhatsApp</p>
+           <p class="text-dark font-semibold">Chat with us instantly</p>
+          </div></a>
+         <div class="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100">
+          <div class="w-12 h-12 bg-brand/10 rounded-xl flex items-center justify-center">
+           <i data-lucide="video" class="text-brand" style="width:24px;height:24px;"></i>
+          </div>
+          <div>
+           <p class="text-gray-500 text-xs">TikTok</p>
+           <p class="text-dark font-semibold">@Eng Wahome</p>
+          </div>
+         </div>
+        </div><!-- Map Placeholder -->
+        <div class="mt-8 bg-gray-200 rounded-2xl h-48 flex items-center justify-center">
+         <div class="text-center"><i data-lucide="map-pin" class="text-brand mx-auto mb-2" style="width:32px;height:32px;"></i>
+          <p class="text-gray-600 font-semibold text-sm">Nairobi, Kenya</p>
+          <p class="text-gray-400 text-xs">Serving clients across Kenya</p>
+         </div>
+        </div>
+       </div><!-- Contact Form -->
+       <div>
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+         <h3 class="font-heading font-bold text-xl text-dark mb-6">Send a Message</h3>
+         <form id="contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="space-y-5">
+           <div><label for="c-name" class="block text-sm font-semibold text-dark mb-2">Full Name</label> <input type="text" id="c-name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="Your name">
+           </div>
+           <div><label for="c-email" class="block text-sm font-semibold text-dark mb-2">Email</label> <input type="email" id="c-email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm" placeholder="you@email.com">
+           </div>
+           <div><label for="c-message" class="block text-sm font-semibold text-dark mb-2">Message</label> <textarea id="c-message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-all text-sm resize-none" placeholder="How can we help?"></textarea>
+           </div>
+          </div><button type="submit" class="mt-6 w-full bg-brand hover:bg-brandDark text-dark font-heading font-bold py-3.5 rounded-full transition-all flex items-center justify-center gap-2"> Send Message <i data-lucide="send" style="width:18px;height:18px;"></i> </button>
+         </form>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== BLOG PAGE ==================== -->
+   <div id="page-blog" class="page">
+    <section class="pt-24 md:pt-28 pb-16 bg-dark">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><span class="inline-block bg-brand/10 text-brand font-heading font-semibold text-sm px-4 py-1.5 rounded-full mb-4">Blog</span>
+      <h1 class="font-heading font-900 text-4xl sm:text-5xl text-white">Tips &amp; <span class="gradient-text">Insights</span></h1>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Expert advice on electrical safety, solar energy, and interior design in Kenya.</p>
+     </div>
+    </section>
+    <section class="py-16 bg-lightBg">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-8"><!-- Blog Cards -->
+       <article class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center p-6"><i data-lucide="zap" class="text-blue-300" style="width:48px;height:48px;"></i>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-3"><span class="bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full">Electrical</span> <span class="text-gray-400 text-xs">5 min read</span>
+         </div>
+         <h3 class="font-heading font-bold text-lg text-dark leading-snug">How Much Does House Wiring Cost in Kenya?</h3>
+         <p class="text-gray-500 text-sm mt-2 leading-relaxed">A comprehensive guide to understanding wiring costs for different house sizes in Kenya. Budget from KSh 50,000 to KSh 300,000+.</p>
+         <div id="blog-1-content" class="hidden mt-4 text-gray-600 text-sm leading-relaxed border-t pt-4">
+          <p class="mb-3"><strong>Factors Affecting Cost:</strong></p>
+          <ul class="list-disc pl-5 space-y-1 mb-3">
+           <li>House size and number of rooms</li>
+           <li>Quality of materials (cables, switches, sockets)</li>
+           <li>Type of wiring (surface vs concealed)</li>
+           <li>Location and accessibility</li>
+           <li>Additional features (smart switches, surge protection)</li>
+          </ul>
+          <p class="mb-3"><strong>Estimated Costs:</strong></p>
+          <ul class="list-disc pl-5 space-y-1">
+           <li>Bedsitter: KSh 15,000 – 30,000</li>
+           <li>1-2 Bedroom: KSh 30,000 – 80,000</li>
+           <li>3-4 Bedroom: KSh 80,000 – 200,000</li>
+           <li>5+ Bedroom/Mansion: KSh 200,000+</li>
+          </ul>
+          <p class="mt-3">Always get quotes from certified electricians. At Elwatt, we provide free, detailed quotations with no hidden costs.</p>
+         </div><button onclick="toggleBlog('blog-1-content', this)" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Read More <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+        </div>
+       </article>
+       <article class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center p-6"><i data-lucide="sun" class="text-green-300" style="width:48px;height:48px;"></i>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-3"><span class="bg-green-50 text-green-600 text-xs font-semibold px-3 py-1 rounded-full">Solar</span> <span class="text-gray-400 text-xs">7 min read</span>
+         </div>
+         <h3 class="font-heading font-bold text-lg text-dark leading-snug">5 Benefits of Solar Energy for Kenyan Homes</h3>
+         <p class="text-gray-500 text-sm mt-2 leading-relaxed">Why more Kenyan families are switching to solar power and how much you can save on monthly bills.</p>
+         <div id="blog-2-content" class="hidden mt-4 text-gray-600 text-sm leading-relaxed border-t pt-4">
+          <ol class="list-decimal pl-5 space-y-2">
+           <li><strong>Reduced Electricity Bills:</strong> Save 50-80% on monthly power costs.</li>
+           <li><strong>Energy Independence:</strong> No more relying on KPLC and dealing with blackouts.</li>
+           <li><strong>Environmental Impact:</strong> Clean, renewable energy reduces your carbon footprint.</li>
+           <li><strong>Property Value:</strong> Solar installations increase your home's resale value.</li>
+           <li><strong>Government Incentives:</strong> Kenya offers tax benefits for solar adopters.</li>
+          </ol>
+          <p class="mt-3">A 3kW system costs KSh 250,000–400,000 and pays for itself within 3-4 years through savings.</p>
+         </div><button onclick="toggleBlog('blog-2-content', this)" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Read More <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+        </div>
+       </article>
+       <article class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center p-6"><i data-lucide="palette" class="text-purple-300" style="width:48px;height:48px;"></i>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-3"><span class="bg-purple-50 text-purple-600 text-xs font-semibold px-3 py-1 rounded-full">Interior</span> <span class="text-gray-400 text-xs">4 min read</span>
+         </div>
+         <h3 class="font-heading font-bold text-lg text-dark leading-snug">Interior Design Tips for Small Homes</h3>
+         <p class="text-gray-500 text-sm mt-2 leading-relaxed">Maximize style and functionality in compact Kenyan apartments with these proven design strategies.</p>
+         <div id="blog-3-content" class="hidden mt-4 text-gray-600 text-sm leading-relaxed border-t pt-4">
+          <ul class="list-disc pl-5 space-y-2">
+           <li><strong>Use mirrors:</strong> They create the illusion of more space and reflect natural light.</li>
+           <li><strong>Go vertical:</strong> Wall shelves and tall storage maximize floor space.</li>
+           <li><strong>Light colors:</strong> White and pastels make rooms feel larger and airier.</li>
+           <li><strong>Multi-functional furniture:</strong> Ottoman storage, sofa beds, nesting tables.</li>
+           <li><strong>Smart lighting:</strong> Layer ambient, task, and accent lights for depth.</li>
+          </ul>
+         </div><button onclick="toggleBlog('blog-3-content', this)" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Read More <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+        </div>
+       </article>
+       <article class="card-hover bg-white rounded-2xl overflow-hidden border border-gray-100">
+        <div class="aspect-video bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center p-6"><i data-lucide="alert-triangle" class="text-red-300" style="width:48px;height:48px;"></i>
+        </div>
+        <div class="p-6">
+         <div class="flex items-center gap-3 mb-3"><span class="bg-red-50 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">Safety</span> <span class="text-gray-400 text-xs">3 min read</span>
+         </div>
+         <h3 class="font-heading font-bold text-lg text-dark leading-snug">Electrical Safety Tips Every Homeowner Should Know</h3>
+         <p class="text-gray-500 text-sm mt-2 leading-relaxed">Protect your family with these essential electrical safety practices for Kenyan households.</p>
+         <div id="blog-4-content" class="hidden mt-4 text-gray-600 text-sm leading-relaxed border-t pt-4">
+          <ul class="list-disc pl-5 space-y-2">
+           <li><strong>Don't overload sockets:</strong> Use one plug per socket and avoid extension cascading.</li>
+           <li><strong>Check wiring regularly:</strong> Old or damaged wiring causes fires. Schedule annual inspections.</li>
+           <li><strong>Install RCDs:</strong> Residual Current Devices protect against electric shock.</li>
+           <li><strong>Keep water away:</strong> Never use electrical appliances near water sources.</li>
+           <li><strong>Hire professionals:</strong> DIY electrical work is dangerous and illegal in Kenya.</li>
+          </ul>
+         </div><button onclick="toggleBlog('blog-4-content', this)" class="mt-4 text-brand font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all">Read More <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+        </div>
+       </article>
+      </div>
+     </div>
+    </section>
+   </div><!-- ==================== FOOTER ==================== -->
+   <footer id="main-footer" class="bg-dark border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+       <div class="flex items-center gap-2 mb-4">
+        <svg width="28" height="28" viewbox="0 0 40 40" fill="none">
+         <rect width="40" height="40" rx="8" fill="#F5C518" /><path d="M12 10h10v4H16v4h5v4h-5v4h6v4H12V10z" fill="#0A0A0A" /><path d="M24 10h4v20h-4V10z" fill="#0A0A0A" />
+        </svg><span class="font-heading font-bold text-white text-sm">ELWATT</span>
+       </div>
+       <p class="text-gray-500 text-sm leading-relaxed">Professional electrical and interior design solutions across Kenya.</p>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-white text-sm mb-4">Quick Links</h4>
+       <nav class="flex flex-col gap-2"><a onclick="navigateTo('home')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Home</a> <a onclick="navigateTo('services')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Services</a> <a onclick="navigateTo('projects')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Projects</a> <a onclick="navigateTo('blog')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Blog</a>
+       </nav>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-white text-sm mb-4">Services</h4>
+       <nav class="flex flex-col gap-2"><a onclick="navigateTo('services')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Electrical</a> <a onclick="navigateTo('interior')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Interior Design</a> <a onclick="navigateTo('services')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Solar</a> <a onclick="navigateTo('quote')" class="text-gray-500 hover:text-brand text-sm cursor-pointer transition-colors">Get Quote</a>
+       </nav>
+      </div>
+      <div>
+       <h4 class="font-heading font-bold text-white text-sm mb-4">Contact</h4>
+       <div class="flex flex-col gap-2">
+        <p class="text-gray-500 text-sm" id="footer-phone">📞 +254 796 437 936</p>
+        <p class="text-gray-500 text-sm" id="footer-email">✉️ elwattelectrical@gmail.com</p>
+        <p class="text-gray-500 text-sm">📍 Nairobi, Kenya</p>
+       </div>
+      </div>
+     </div>
+     <div class="mt-10 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-xs">© 2024 Elwatt Electrical &amp; Interior Design. All rights reserved.</p>
+      <div class="flex gap-3"><a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand/20 transition-colors"> <i data-lucide="message-circle" class="text-gray-500" style="width:16px;height:16px;"></i> </a> <a href="mailto:elwattelectrical@gmail.com" class="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand/20 transition-colors"> <i data-lucide="mail" class="text-gray-500" style="width:16px;height:16px;"></i> </a> <a href="tel:+254796437936" class="w-9 h-9 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand/20 transition-colors"> <i data-lucide="phone" class="text-gray-500" style="width:16px;height:16px;"></i> </a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div><!-- end app-wrapper --> <!-- Floating WhatsApp Button --> <a href="https://wa.me/254796437936" target="_blank" rel="noopener noreferrer" class="whatsapp-float w-14 h-14 bg-accent hover:bg-accentDark rounded-full flex items-center justify-center shadow-lg shadow-accent/30 transition-colors"> <i data-lucide="message-circle" class="text-white" style="width:28px;height:28px;"></i> </a>
+  <script>
+// ==================== NAVIGATION ====================
+let currentPage = 'home';
+
+function navigateTo(page) {
+  // Hide current page
+  const currentEl = document.getElementById('page-' + currentPage);
+  if (currentEl) {
+    currentEl.classList.remove('active');
+  }
+
+  // Show new page
+  const newEl = document.getElementById('page-' + page);
+  if (newEl) {
+    newEl.classList.add('active');
+    currentPage = page;
+    // Scroll to top
+    document.getElementById('app-wrapper').scrollTop = 0;
+  }
+
+  // Show/hide footer (show on all pages)
+  document.getElementById('main-footer').style.display = 'block';
+}
+
+// ==================== MOBILE MENU ====================
+let mobileMenuOpen = false;
+function toggleMobileMenu() {
+  mobileMenuOpen = !mobileMenuOpen;
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-overlay');
+  if (mobileMenuOpen) {
+    menu.classList.add('open');
+    overlay.classList.remove('hidden');
+  } else {
+    menu.classList.remove('open');
+    overlay.classList.add('hidden');
+  }
+}
+
+// ==================== PROJECT FILTERS ====================
+function filterProjects(category, btn) {
+  // Update active button
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.remove('active');
+    b.classList.add('text-gray-600');
+  });
+  btn.classList.add('active');
+  btn.classList.remove('text-gray-600');
+
+  // Filter cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ==================== BLOG TOGGLE ====================
+function toggleBlog(id, btn) {
+  const content = document.getElementById(id);
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    btn.innerHTML = 'Read Less <i data-lucide="chevron-up" style="width:14px;height:14px;"></i>';
+  } else {
+    content.classList.add('hidden');
+    btn.innerHTML = 'Read More <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>';
+  }
+  lucide.createIcons();
+}
+
+// ==================== FORM HANDLERS ====================
+function handleQuoteSubmit(e) {
+  e.preventDefault();
+  document.getElementById('quote-form-container').style.display = 'none';
+  document.getElementById('quote-success').classList.add('show');
+}
+
+function resetQuoteForm() {
+  document.getElementById('quote-form').reset();
+  document.getElementById('quote-form-container').style.display = 'block';
+  document.getElementById('quote-success').classList.remove('show');
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  showToast('Message sent! We\'ll get back to you soon.');
+  document.getElementById('contact-form').reset();
+}
+
+// ==================== TOAST ====================
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ==================== ELEMENT SDK ====================
+const defaultConfig = {
+  hero_headline: 'Powering Spaces. Designing Dreams.',
+  hero_subtext: 'Reliable Electrical & Interior Solutions in Kenya — from wiring to breathtaking interiors.',
+  phone_number: '+254 796 437 936',
+  email_address: 'elwattelectrical@gmail.com',
+  ceo_name: 'Eliud Wahome',
+  background_color: '#FFFFFF',
+  surface_color: '#F7F7F5',
+  text_color: '#0A0A0A',
+  primary_action_color: '#F5C518',
+  secondary_action_color: '#25D366',
+  font_family: 'Outfit',
+  font_size: 16
+};
+
+function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+
+  // Hero content
+  const heroHeadline = document.getElementById('hero-headline');
+  if (heroHeadline) {
+    const parts = (c.hero_headline || defaultConfig.hero_headline).split('.');
+    heroHeadline.innerHTML = parts[0] + '.<br><span class="gradient-text">' + (parts[1] || '').trim() + (parts[1] ? '.' : '') + '</span>';
+  }
+
+  const heroSubtext = document.getElementById('hero-subtext');
+  if (heroSubtext) heroSubtext.textContent = c.hero_subtext || defaultConfig.hero_subtext;
+
+  // CEO name
+  const ceoName = document.getElementById('ceo-name-display');
+  if (ceoName) ceoName.textContent = c.ceo_name || defaultConfig.ceo_name;
+
+  // Contact info
+  const phoneDisplay = document.getElementById('phone-display');
+  if (phoneDisplay) phoneDisplay.textContent = c.phone_number || defaultConfig.phone_number;
+
+  const contactPhone = document.getElementById('contact-phone');
+  if (contactPhone) contactPhone.textContent = c.phone_number || defaultConfig.phone_number;
+
+  const contactEmail = document.getElementById('contact-email');
+  if (contactEmail) contactEmail.textContent = c.email_address || defaultConfig.email_address;
+
+  const footerPhone = document.getElementById('footer-phone');
+  if (footerPhone) footerPhone.textContent = '📞 ' + (c.phone_number || defaultConfig.phone_number);
+
+  const footerEmail = document.getElementById('footer-email');
+  if (footerEmail) footerEmail.textContent = '✉️ ' + (c.email_address || defaultConfig.email_address);
+
+  // Font
+  const customFont = c.font_family || defaultConfig.font_family;
+  const baseSize = c.font_size || defaultConfig.font_size;
+
+  document.querySelectorAll('.font-heading').forEach(el => {
+    el.style.fontFamily = `${customFont}, Outfit, sans-serif`;
+  });
+
+  document.body.style.fontSize = baseSize + 'px';
+}
+
+if (window.elementSdk) {
+  window.elementSdk.init({
+    defaultConfig,
+    onConfigChange: async (config) => {
+      applyConfig(config);
+    },
+    mapToCapabilities: (config) => ({
+      recolorables: [
+        {
+          get: () => config.background_color || defaultConfig.background_color,
+          set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+        },
+        {
+          get: () => config.surface_color || defaultConfig.surface_color,
+          set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+        },
+        {
+          get: () => config.text_color || defaultConfig.text_color,
+          set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+        },
+        {
+          get: () => config.primary_action_color || defaultConfig.primary_action_color,
+          set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); }
+        },
+        {
+          get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+          set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); }
+        }
+      ],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+      }
+    }),
+    mapToEditPanelValues: (config) => new Map([
+      ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+      ['hero_subtext', config.hero_subtext || defaultConfig.hero_subtext],
+      ['phone_number', config.phone_number || defaultConfig.phone_number],
+      ['email_address', config.email_address || defaultConfig.email_address],
+      ['ceo_name', config.ceo_name || defaultConfig.ceo_name]
+    ])
+  });
+}
+
+// Initialize Lucide icons
+lucide.createIcons();
+
+// Apply default config on load
+applyConfig(defaultConfig);
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9df599b835b765e7',t:'MTc3NDAxODk3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+     </html>
