@@ -1,0 +1,24 @@
+# .gitignore for web development projects
+
+# Node modules
+node_modules/
+
+# Build folders
+build/
+dist/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+.
+
+# Environment files
+.env
+.env.local
+.env.*.local
